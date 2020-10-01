@@ -3,6 +3,10 @@ name = "cusl_alerts_migration"
 version = "0.1.0"
 description = "Clean-up allergies exports at Cliniques Universitaires Saint-Luc to import the content into the new EMR"
 authors = ["HEROUFOSSE Martin <martin.heroufosse@uclouvain.be>"]
+license = "MIT"
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
