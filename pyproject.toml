@@ -8,6 +8,7 @@ authors = ["HEROUFOSSE Martin <martin.heroufosse@uclouvain.be>"]
 python = "^3.6.1"
 pandas = "^1.1.2"
 xlrd = "^1.2.0"
+openpyxl = "^3.0.5"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
