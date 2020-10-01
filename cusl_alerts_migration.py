@@ -16,7 +16,7 @@ if not os.path.exists(report_path):
 # filename = "2020-02-27_alertes_except_dechet_v2.xlsx"
 # path = "Data/" + filename
 
-file = [f.name for f in os.scandir("Data") if f.is_file()]
+file = [f.name for f in os.scandir("Data") if f.is_file() and f.name.endswith(".xlsx")]
 path = "Data/" + file[0]
 print(f"Lecture et analyse du fichier : {path}")
 df = pd.read_excel(path)
