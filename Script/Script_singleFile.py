@@ -62,7 +62,9 @@ for value in to_transfer:
 
 # Part 10 -- Drop duplicate, Filtering
 for key, value in dict.items():
-    # result_df = value.apply(lambda x: x.astype(str).str.lower()).drop_duplicates(subset=["numpat","nte_3", "al1_6","statut"])
+    # result_df = value.apply(lambda x: x.astype(str).str.lower()).drop_duplicates(
+    #     subset=["numpat", "nte_3", "al1_6", "statut"]
+    # )
     # value = value.loc[result_df.index]
     # Create a new column with the lenght of the strings. This is used in the case
     # where there are 2 different alerts on the same day, we want to retrieve the most
@@ -84,7 +86,12 @@ for key, value in dict.items():
         .apply(", ".join)
         .reset_index(name="test_aggregate")
     )
-    # dict_grouped_test["grouped_{0}".format(key)] = dict[key].groupby('numpat')['nte_3'].apply(list).reset_index(name='test_aggregate')
+    # dict_grouped_test["grouped_{0}".format(key)] = (
+    #     dict[key]
+    #     .groupby("numpat")["nte_3"]
+    #     .apply(list)
+    #     .reset_index(name="test_aggregate")
+    # )
 
 # Part 12 -- Aggregate filtering. NOT VALIDATED !
 for key, value in dict_grouped_test.items():
