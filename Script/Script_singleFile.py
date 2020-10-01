@@ -1,9 +1,6 @@
 # Part 0 -- INFO
 
 # Part 1 -- Imports
-# If you don't have pandas installed, the following snippet should install it for you.
-# import sys
-# !{sys.executable} -m pip install pandas
 import os
 
 import pandas as pd
