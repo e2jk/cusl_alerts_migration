@@ -25,7 +25,7 @@ The alert file must be deposited in the `Data` folder.
 
 Run the script:
 ```
-poetry run python Script_singleFile.py
+poetry run python cusl_alerts_migration.py
 ```
 
 The result of the script will be saved in the folder `Data\output\`.
