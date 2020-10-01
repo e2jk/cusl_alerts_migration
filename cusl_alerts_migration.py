@@ -59,16 +59,11 @@ for value in to_transfer:
 
 # Part 10 -- Drop duplicate, Filtering
 for key, value in dict.items():
-    # result_df = value.apply(lambda x: x.astype(str).str.lower()).drop_duplicates(
-    #     subset=["numpat", "nte_3", "al1_6", "statut"]
-    # )
-    # value = value.loc[result_df.index]
     # Create a new column with the lenght of the strings. This is used in the case
     # where there are 2 different alerts on the same day, we want to retrieve the most
     # complete.
     value["length"] = value["nte_3"].apply(lambda x: len(x))
     value.drop_duplicates(["numpat", "nte_3", "al1_6"], inplace=True)
-    # value.drop_duplicates(["numpat","nte_3", "al1_6","statut"], inplace=True)
     value.sort_values(
         ["numpat", "al1_6", "length"], ascending=[True, False, False], inplace=True
     )
@@ -83,20 +78,13 @@ for key, value in dict.items():
         .apply(", ".join)
         .reset_index(name="test_aggregate")
     )
-    # dict_grouped_test["grouped_{0}".format(key)] = (
-    #     dict[key]
-    #     .groupby("numpat")["nte_3"]
-    #     .apply(list)
-    #     .reset_index(name="test_aggregate")
-    # )
 
 # Part 12 -- Aggregate filtering. NOT VALIDATED !
 for key, value in dict_grouped_test.items():
     value["test"] = value["test_aggregate"].str.findall(
         r"((?:auto[ -])?[Aa]nti-[\s]*\S[^,. :;]*)"
-    )  # (Anti-[\s]*\S[^,. :;]*)#(r"(Anti-\S[^, .:]*)")
+    )
     value["test_2"] = value["test"].apply(set)
-# Last regex : (Anti-\s*\S[^,. :]*)+?(?=Anti)*
 
 # Part 13 -- Export format definition + aggregation. VALIDATED
 def f(x):
@@ -112,7 +100,6 @@ def f(x):
 # Part 14 -- Apply previous step.
 dict_grouped = {}
 for key, value in dict.items():
-    # grouped = dict[key].groupby("numpat")
     dict_grouped["grouped_{0}".format(key)] = (
         dict[key].groupby("numpat").apply(f).reset_index()
     )
