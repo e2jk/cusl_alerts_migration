@@ -151,13 +151,9 @@ with pd.ExcelWriter(
 
 print(
     'Attention, les colonnes "aggregate", "test" et "test_2" n\'ont jamais été '
-    "validées."
-)
-print(
+    "validées.\n"
     "Les données de ces colonnes ont été manipulées et modifiées et sont susceptibles "
-    "d'être incorrectes."
-)
-print(
+    "d'être incorrectes.\n"
     "Ces colonnes n'ont pour vocation que de permettre détecter les patients n'ayant "
     "qu'un seul type d'anticorps, que l'on pourrait qualifier de \"bénin\""
 )
