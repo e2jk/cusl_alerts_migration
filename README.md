@@ -25,11 +25,10 @@ The alert file must be deposited in the `Data` folder.
 
 Run the script:
 ```
-cd Script
 poetry run python Script_singleFile.py
 ```
 
-The result of the script will be saved in the folder `Script\output\`.
+The result of the script will be saved in the folder `Data\output\`.
 --> If it doesn't exist, it will be created automatically.
 
 Notice: the script may take several minutes to run.

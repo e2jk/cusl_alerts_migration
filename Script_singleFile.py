@@ -6,7 +6,7 @@ import os
 import pandas as pd
 
 pd.options.mode.chained_assignment = None
-report_path = "output"
+report_path = "Data/output"
 if not os.path.exists(report_path):
     os.makedirs(report_path)
 
@@ -14,10 +14,10 @@ if not os.path.exists(report_path):
 # --> Uncomment the following lines to manually input the directory and file.
 # filename will need to be changed once you receive the new file.
 # filename = "2020-02-27_alertes_except_dechet_v2.xlsx"
-# path = "../Data/" + filename
+# path = "Data/" + filename
 
-file = [f.name for f in os.scandir("../Data") if f.is_file()]
-path = "../Data/" + file[0]
+file = [f.name for f in os.scandir("Data") if f.is_file()]
+path = "Data/" + file[0]
 print(f"Lecture et analyse du fichier : {path}")
 df = pd.read_excel(path)
 
