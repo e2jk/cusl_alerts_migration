@@ -5,9 +5,11 @@
 #import sys
 #!{sys.executable} -m pip install pandas
 import pandas as pd
+
 pd.options.mode.chained_assignment = None
 
 import os
+
 report_path = 'output'
 if not os.path.exists(report_path):
     os.makedirs(report_path)
