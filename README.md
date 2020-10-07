@@ -28,7 +28,6 @@ Run the script:
 poetry run python cusl_alerts_migration.py
 ```
 
-The result of the script will be saved in the folder `Data\output\`.
---> If it doesn't exist, it will be created automatically.
+The result of the script will be saved in the same folder `Data\`, with `_processed` appended to the processed file's name.
 
 Notice: the script may take several minutes to run.

@@ -6,21 +6,18 @@ import os
 import pandas as pd
 
 pd.options.mode.chained_assignment = None
-report_path = "Data/output"
-if not os.path.exists(report_path):
-    os.makedirs(report_path)
 
 # Part 2 -- Directory location
 # --> Uncomment the following lines to manually input the directory and file.
 # filename will need to be changed once you receive the new file.
 # filename = "2020-02-27_alertes_except_dechet_v2.xlsx"
-# path = "Data/" + filename
+# input_file = "Data\" + filename
 
 file = [f.name for f in os.scandir("Data") if f.is_file() and f.name.endswith(".xlsx")]
-path = "Data/" + file[0]
-print(f"Lecture et analyse du fichier : {path}")
-df = pd.read_excel(path)
-
+input_file = os.path.join("Data", file[0])
+output_file = "%s_processed%s" % os.path.splitext(input_file)
+print(f"Lecture et analyse du fichier : {input_file}")
+df = pd.read_excel(input_file)
 
 # Part 3 -- Initial filter
 df_transfusion = df[(df["type"] == "transfusion") & (df["statut"] == "activé")]
@@ -116,9 +113,8 @@ dict_grouped["grouped_df_transfusion_Ac_antiérythrocytaires"][
 ] = dict_grouped_test["grouped_df_transfusion_Ac_antiérythrocytaires"]["test_2"]
 
 # Part 16 -- Export.
-with pd.ExcelWriter(
-    os.path.join(report_path, "import_alert_transf" + ".xlsx")
-) as writer:
+print(f"Ecriture du fichier de sortie : {output_file}")
+with pd.ExcelWriter(output_file) as writer:
     for key in dict_grouped:
         # Par catégorie d'alerte, toutes les alertes regroupées de façon à n'avoir
         # qu'une ligne par patient.
